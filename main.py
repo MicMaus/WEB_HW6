@@ -14,7 +14,7 @@ fake_lessons = [
     "geography",
 ]
 GROUPS = ["Group1", "Group2", "Group3"]
-notes = ["A", "B", "C", "D", "E", "FX"]
+notes = ["1", "2", "3", "4", "5"]
 
 fake_data = faker.Faker()
 
@@ -38,11 +38,11 @@ def generate_fake_data(
     MAX_NOTES_PER_STUDENT,
 ) -> tuple():
     fake_students = []
-    for _ in range(NUMBER_STUDENTS + 1):
+    for _ in range(NUMBER_STUDENTS):
         fake_students.append(fake_data.name())
 
     fake_teachers = []
-    for _ in range(NUMBER_TEACHERS + 1):
+    for _ in range(NUMBER_TEACHERS):
         name = fake_data.name()
         degree = fake_data.suffix_nonbinary()
         full_name = f"{name}, {degree}"
@@ -51,7 +51,7 @@ def generate_fake_data(
     # Ensure that each student has a maximum of 'MAX_NOTES_PER_STUDENT' notes
     fake_notes = []
 
-    for student_id in range(1, NUMBER_STUDENTS + 1):
+    for student_id in range(1, NUMBER_STUDENTS):
         # Determine the number of notes for the current student
         num_notes_for_student = randint(1, min(MAX_NOTES_PER_STUDENT, len(notes)))
 
